@@ -25,10 +25,21 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping
-	public String createUser(@RequestBody User user) {
-		userService.saveUser(user);
-		return "The user data is added!";
-	}
+	public ResponseEntity<?> createUser(@RequestBody User user) {
+		
+		User existingUser = userService.findUserByEmail(user.getEmailId());
+			
+	    if(existingUser!=null)	
+		{
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("User with the same email already exists");
+        }
+
+        // If not, proceed to save the user
+        User addedUser = userService.saveUser(user);
+        return ResponseEntity.ok(addedUser);
+    }
+	
 	
 	@GetMapping
 	public List<User> get(){
