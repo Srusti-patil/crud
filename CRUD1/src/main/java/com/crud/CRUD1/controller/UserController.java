@@ -21,7 +21,6 @@ import com.crud.CRUD1.services.UserService;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
 	@Autowired
 	private UserService userService;
 	

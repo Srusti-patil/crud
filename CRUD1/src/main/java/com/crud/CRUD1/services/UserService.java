@@ -4,7 +4,6 @@ import com.crud.CRUD1.entities.User;
 import java.util.List;
 
 public interface UserService {
-	
 	public User saveUser(User user);
 	public List<User> getAllUsers();
 	public User getUserById(int id);

@@ -58,6 +58,5 @@ public class UserServicesImpl implements UserService{
     {		
 	return userRepo.findByEmail(emailId);	
 	}
-	
-    
+	 
 }
